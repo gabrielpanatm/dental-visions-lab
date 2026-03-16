@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Layers, Diamond, Scan, Box, Crosshair, Palette } from "lucide-react";
 import Layout from "@/components/Layout";
 
-const ease = [0.2, 0, 0, 1];
+const ease = [0.2, 0, 0, 1] as const;
 
 const services = [
   {

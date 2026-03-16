@@ -4,7 +4,7 @@ import { ArrowRight, Microscope, Cpu, ShieldCheck } from "lucide-react";
 import Layout from "@/components/Layout";
 import heroImage from "@/assets/hero-dental.jpg";
 
-const ease = [0.2, 0, 0, 1];
+const ease = [0.2, 0, 0, 1] as const;
 
 const partners = [
   "Clinica Dentară Perfecta",

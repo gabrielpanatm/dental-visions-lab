@@ -8,7 +8,7 @@ import portfolioImplant from "@/assets/portfolio-implant.jpg";
 import portfolioDigital from "@/assets/portfolio-digital.jpg";
 import portfolioFeldspat from "@/assets/portfolio-feldspat.jpg";
 
-const ease = [0.2, 0, 0, 1];
+const ease = [0.2, 0, 0, 1] as const;
 
 type Category = "Toate" | "Fațete" | "Coroane" | "Implanturi" | "Digital";
 
