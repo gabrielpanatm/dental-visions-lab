@@ -12,36 +12,36 @@ import servicesPreview from "@/assets/services-preview.jpg";
 const ease = [0.2, 0, 0, 1] as const;
 
 const partners = [
-  "Clinica Dentară Perfecta",
-  "SmileCare Center",
-  "Pro Dental Studio",
-  "Dental Excellence",
-  "OralMed Clinic",
-  "DentPremium",
-  "Clinica Dentară Perfecta",
-  "SmileCare Center",
-  "Pro Dental Studio",
-  "Dental Excellence",
-  "OralMed Clinic",
-  "DentPremium",
-];
+"Clinica Dentară Perfecta",
+"SmileCare Center",
+"Pro Dental Studio",
+"Dental Excellence",
+"OralMed Clinic",
+"DentPremium",
+"Clinica Dentară Perfecta",
+"SmileCare Center",
+"Pro Dental Studio",
+"Dental Excellence",
+"OralMed Clinic",
+"DentPremium"];
+
 
 const stats = [
-  { value: 15000, suffix: "+", label: "Restaurări anuale" },
-  { value: 12, suffix: "+", label: "Ani de experiență" },
-  { value: 98, suffix: "%", label: "Rata de satisfacție" },
-  { value: 200, suffix: "+", label: "Clinici partenere" },
-];
+{ value: 15000, suffix: "+", label: "Restaurări anuale" },
+{ value: 12, suffix: "+", label: "Ani de experiență" },
+{ value: 98, suffix: "%", label: "Rata de satisfacție" },
+{ value: 200, suffix: "+", label: "Clinici partenere" }];
+
 
 const processSteps = [
-  { num: "01", title: "Recepție Digitală", desc: "Primim fișierele STL direct de la scanerul intraoral sau de la laborator." },
-  { num: "02", title: "Design CAD", desc: "Proiectăm restaurarea în Exocad cu atenție la detalii anatomice și funcționale." },
-  { num: "03", title: "Producție CAM", desc: "Frezare în 5 axe din blocuri de zirconiu, e.max sau titan de cea mai înaltă calitate." },
-  { num: "04", title: "Finisare & QC", desc: "Stratificare manuală, glazurare și control de calitate sub microscop înainte de livrare." },
-];
+{ num: "01", title: "Recepție Digitală", desc: "Primim fișierele STL direct de la scanerul intraoral sau de la laborator." },
+{ num: "02", title: "Design CAD", desc: "Proiectăm restaurarea în Exocad cu atenție la detalii anatomice și funcționale." },
+{ num: "03", title: "Producție CAM", desc: "Frezare în 5 axe din blocuri de zirconiu, e.max sau titan de cea mai înaltă calitate." },
+{ num: "04", title: "Finisare & QC", desc: "Stratificare manuală, glazurare și control de calitate sub microscop înainte de livrare." }];
+
 
 // Animated counter component
-const Counter = ({ value, suffix }: { value: number; suffix: string }) => {
+const Counter = ({ value, suffix }: {value: number;suffix: string;}) => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true });
   const [count, setCount] = useState(0);
@@ -67,15 +67,15 @@ const Counter = ({ value, suffix }: { value: number; suffix: string }) => {
   return (
     <div ref={ref} className="text-3xl md:text-5xl font-bold text-primary tabular-nums">
       {count.toLocaleString("ro-RO")}{suffix}
-    </div>
-  );
+    </div>);
+
 };
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
-    offset: ["start start", "end start"],
+    offset: ["start start", "end start"]
   });
 
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
@@ -91,8 +91,8 @@ const Index = () => {
           <img
             src={heroImage}
             alt="Frezare CAD/CAM de precizie"
-            className="w-full h-full object-cover"
-          />
+            className="w-full h-full object-cover" />
+          
         </motion.div>
 
         {/* Multi-layer gradient overlay */}
@@ -107,31 +107,31 @@ const Index = () => {
           className="absolute inset-0 pointer-events-none"
           style={{
             backgroundImage: "linear-gradient(hsl(var(--primary-foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary-foreground)) 1px, transparent 1px)",
-            backgroundSize: "80px 80px",
-          }}
-        />
+            backgroundSize: "80px 80px"
+          }} />
+        
 
         {/* Floating accent elements */}
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 0.15, scale: 1 }}
           transition={{ delay: 1.8, duration: 1.5, ease }}
-          className="absolute top-1/4 right-[15%] w-64 h-64 rounded-full border border-primary/30 hidden lg:block"
-        />
+          className="absolute top-1/4 right-[15%] w-64 h-64 rounded-full border border-primary/30 hidden lg:block" />
+        
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 0.1, scale: 1 }}
           transition={{ delay: 2, duration: 1.5, ease }}
-          className="absolute top-1/3 right-[10%] w-40 h-40 rounded-full bg-primary/20 blur-3xl hidden lg:block"
-        />
+          className="absolute top-1/3 right-[10%] w-40 h-40 rounded-full bg-primary/20 blur-3xl hidden lg:block" />
+        
 
         {/* Corner technical marks */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.3 }}
           transition={{ delay: 2.2, duration: 1 }}
-          className="absolute top-24 right-8 text-primary-foreground/40 text-[10px] font-mono tracking-widest hidden lg:block"
-        >
+          className="absolute top-24 right-8 text-primary-foreground/40 text-[10px] font-mono tracking-widest hidden lg:block">
+          
           <div>LAT 44.4268°N</div>
           <div>LON 26.1025°E</div>
         </motion.div>
@@ -146,13 +146,13 @@ const Index = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.3, ease }}
-                className="flex items-center gap-3 mb-8"
-              >
+                className="flex items-center gap-3 mb-8">
+                
                 <motion.div
                   animate={{ scaleX: [0, 1] }}
                   transition={{ duration: 0.8, delay: 0.5, ease }}
-                  className="h-px w-12 bg-primary origin-left"
-                />
+                  className="h-px w-12 bg-primary origin-left" />
+                
                 <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary">
                   Laborator de Tehnică Dentară
                 </span>
@@ -164,8 +164,8 @@ const Index = () => {
                   <motion.div
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
-                    transition={{ duration: 1, delay: 0.5, ease }}
-                  >
+                    transition={{ duration: 1, delay: 0.5, ease }}>
+                    
                     <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold text-primary-foreground leading-[0.95]">
                       Sinergia
                     </h1>
@@ -175,8 +175,8 @@ const Index = () => {
                   <motion.div
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
-                    transition={{ duration: 1, delay: 0.65, ease }}
-                  >
+                    transition={{ duration: 1, delay: 0.65, ease }}>
+                    
                     <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold leading-[0.95]">
                       <span className="text-primary">precizie</span>
                       <span className="text-primary-foreground"> &</span>
@@ -187,8 +187,8 @@ const Index = () => {
                   <motion.div
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
-                    transition={{ duration: 1, delay: 0.8, ease }}
-                  >
+                    transition={{ duration: 1, delay: 0.8, ease }}>
+                    
                     <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold text-primary-foreground leading-[0.95]">
                       măiestrie<span className="text-primary">.</span>
                     </h1>
@@ -201,25 +201,25 @@ const Index = () => {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 1.3, ease }}
-                className="mt-10 flex flex-wrap gap-4"
-              >
+                className="mt-10 flex flex-wrap gap-4">
+                
                 <Link
                   to="/servicii"
-                  className="group relative inline-flex items-center gap-2 h-14 px-8 text-sm font-medium rounded-xl bg-primary text-primary-foreground overflow-hidden transition-all duration-300 hover:gap-3"
-                >
+                  className="group relative inline-flex items-center gap-2 h-14 px-8 text-sm font-medium rounded-xl bg-primary text-primary-foreground overflow-hidden transition-all duration-300 hover:gap-3">
+                  
                   <span className="relative z-10">Devino partener</span>
                   <ArrowRight size={16} className="relative z-10 transition-transform duration-300 group-hover:translate-x-0.5" />
                   <motion.div
                     className="absolute inset-0 bg-primary/80"
                     initial={{ x: "-100%" }}
                     whileHover={{ x: 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                    transition={{ duration: 0.3 }} />
+                  
                 </Link>
                 <Link
                   to="/lucrari"
-                  className="inline-flex items-center gap-2 h-14 px-8 text-sm font-medium rounded-xl border border-primary-foreground/20 text-primary-foreground backdrop-blur-md hover:bg-primary-foreground/10 transition-all duration-300"
-                >
+                  className="inline-flex items-center gap-2 h-14 px-8 text-sm font-medium rounded-xl border border-primary-foreground/20 text-primary-foreground backdrop-blur-md hover:bg-primary-foreground/10 transition-all duration-300">
+                  
                   Vezi portofoliul
                 </Link>
               </motion.div>
@@ -230,8 +230,8 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.5, ease }}
-              className="lg:col-span-4 hidden lg:flex flex-col items-end gap-8"
-            >
+              className="lg:col-span-4 hidden lg:flex flex-col items-end gap-8">
+              
               <p className="text-sm text-primary-foreground/50 text-right max-w-[240px] leading-relaxed">
                 Nu livrăm doar dinți, livrăm predictibilitate pentru clinica dumneavoastră.
               </p>
@@ -255,16 +255,16 @@ const Index = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.5, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
-        >
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
+          
           <span className="text-[10px] text-primary-foreground/30 tracking-[0.3em] uppercase font-medium">
             Descoperă
           </span>
           <motion.div
             className="w-px h-8 bg-gradient-to-b from-primary to-transparent"
             animate={{ scaleY: [0.3, 1, 0.3] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          />
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} />
+          
         </motion.div>
       </section>
 
@@ -272,19 +272,19 @@ const Index = () => {
       <section className="py-24 bg-card relative">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.12, ease }}
-                className="text-center"
-              >
+            {stats.map((stat, i) =>
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.12, ease }}
+              className="text-center">
+              
                 <Counter value={stat.value} suffix={stat.suffix} />
                 <div className="mt-3 text-sm text-muted-foreground font-medium">{stat.label}</div>
               </motion.div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -297,8 +297,8 @@ const Index = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease }}
-            className="max-w-2xl mb-20"
-          >
+            className="max-w-2xl mb-20">
+            
             <p className="text-sm font-medium tracking-widest uppercase text-primary mb-4">De ce noi</p>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground">
               Standardul de aur în restaurările dentare
@@ -311,38 +311,38 @@ const Index = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              {
-                icon: Microscope,
-                title: "Precizie Microscopică",
-                desc: "Fiecare restaurare este verificată sub magnificare 25x pentru a asigura un fit marginal sub 50 microni.",
-              },
-              {
-                icon: Cpu,
-                title: "Flux Digital Complet",
-                desc: "De la scanare intraorală la design Exocad și frezare în 5 axe — un workflow 100% digital, fără compromisuri.",
-              },
-              {
-                icon: ShieldCheck,
-                title: "Materiale Certificate",
-                desc: "Utilizăm exclusiv materiale de la Ivoclar Vivadent, Vita și Kuraray pentru rezultate previzibile pe termen lung.",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.12, ease }}
-                whileHover={{ y: -6 }}
-                className="group bg-card p-10 rounded-2xl shadow-card transition-all duration-300 hover:shadow-card-hover"
-              >
+            {
+              icon: Microscope,
+              title: "Precizie Microscopică",
+              desc: "Fiecare restaurare este verificată sub magnificare 25x pentru a asigura un fit marginal sub 50 microni."
+            },
+            {
+              icon: Cpu,
+              title: "Flux Digital Complet",
+              desc: "De la scanare intraorală la design Exocad și frezare în 5 axe — un workflow 100% digital, fără compromisuri."
+            },
+            {
+              icon: ShieldCheck,
+              title: "Materiale Certificate",
+              desc: "Utilizăm exclusiv materiale de la Ivoclar Vivadent, Vita și Kuraray pentru rezultate previzibile pe termen lung."
+            }].
+            map((item, i) =>
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.12, ease }}
+              whileHover={{ y: -6 }}
+              className="group bg-card p-10 rounded-2xl shadow-card transition-all duration-300 hover:shadow-card-hover">
+              
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/15 transition-colors duration-300">
                   <item.icon size={28} strokeWidth={1.5} className="text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground">{item.title}</h3>
                 <p className="mt-3 text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -356,8 +356,8 @@ const Index = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease }}
-              className="relative"
-            >
+              className="relative">
+              
               <div className="rounded-2xl overflow-hidden shadow-card-hover">
                 <img src={servicesPreview} alt="Laborator DentalLab" className="w-full h-auto object-cover" />
               </div>
@@ -367,8 +367,8 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4, ease }}
-                className="absolute -bottom-6 -right-4 md:right-8 bg-card p-5 rounded-xl shadow-card-hover"
-              >
+                className="absolute -bottom-6 -right-4 md:right-8 bg-card p-5 rounded-xl shadow-card-hover">
+                
                 <div className="text-2xl font-bold text-primary">5 axe</div>
                 <div className="text-xs text-muted-foreground mt-1">Frezare de precizie</div>
               </motion.div>
@@ -378,8 +378,8 @@ const Index = () => {
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, ease }}
-            >
+              transition={{ duration: 0.8, ease }}>
+              
               <p className="text-sm font-medium tracking-widest uppercase text-primary mb-4">Servicii</p>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">
                 Soluții protetice pentru fiecare caz clinic
@@ -391,18 +391,18 @@ const Index = () => {
 
               <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {[
-                  { icon: Diamond, label: "Zirconiu", sub: "Multi-layer" },
-                  { icon: Layers, label: "E-max", sub: "Press & CAD" },
-                  { icon: Scan, label: "Digital", sub: "Full workflow" },
-                ].map((s, i) => (
-                  <motion.div
-                    key={s.label}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.3 + i * 0.1, ease }}
-                    className="flex items-center gap-3 p-3 rounded-xl bg-background"
-                  >
+                { icon: Diamond, label: "Zirconiu", sub: "Multi-layer" },
+                { icon: Layers, label: "E-max", sub: "Press & CAD" },
+                { icon: Scan, label: "Digital", sub: "Full workflow" }].
+                map((s, i) =>
+                <motion.div
+                  key={s.label}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.3 + i * 0.1, ease }}
+                  className="flex items-center gap-3 p-3 rounded-xl bg-background">
+                  
                     <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                       <s.icon size={20} strokeWidth={1.5} className="text-primary" />
                     </div>
@@ -411,13 +411,13 @@ const Index = () => {
                       <div className="text-xs text-muted-foreground">{s.sub}</div>
                     </div>
                   </motion.div>
-                ))}
+                )}
               </div>
 
               <Link
                 to="/servicii"
-                className="group inline-flex items-center gap-2 mt-8 text-sm font-medium text-primary hover:gap-3 transition-all duration-300"
-              >
+                className="group inline-flex items-center gap-2 mt-8 text-sm font-medium text-primary hover:gap-3 transition-all duration-300">
+                
                 Explorează toate serviciile
                 <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5" />
               </Link>
@@ -434,8 +434,8 @@ const Index = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease }}
-            className="text-center max-w-2xl mx-auto mb-20"
-          >
+            className="text-center max-w-2xl mx-auto mb-20">
+            
             <p className="text-sm font-medium tracking-widest uppercase text-primary mb-4">Procesul Nostru</p>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground">
               De la digital la realitate
@@ -446,19 +446,19 @@ const Index = () => {
           </motion.div>
 
           <div className="grid md:grid-cols-4 gap-8">
-            {processSteps.map((step, i) => (
-              <motion.div
-                key={step.num}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.15, ease }}
-                className="relative"
-              >
+            {processSteps.map((step, i) =>
+            <motion.div
+              key={step.num}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.15, ease }}
+              className="relative">
+              
                 {/* Connector line */}
-                {i < processSteps.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-[calc(50%+28px)] w-[calc(100%-56px)] h-px bg-border" />
-                )}
+                {i < processSteps.length - 1 &&
+              <div className="hidden md:block absolute top-8 left-[calc(50%+28px)] w-[calc(100%-56px)] h-px bg-border" />
+              }
                 <div className="text-center">
                   <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5">
                     <span className="text-sm font-bold text-primary">{step.num}</span>
@@ -467,7 +467,7 @@ const Index = () => {
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
                 </div>
               </motion.div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -480,8 +480,8 @@ const Index = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease }}
-            className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6"
-          >
+            className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+            
             <div>
               <p className="text-sm font-medium tracking-widest uppercase text-primary mb-4">Portofoliu</p>
               <h2 className="text-3xl md:text-5xl font-bold text-foreground">
@@ -490,8 +490,8 @@ const Index = () => {
             </div>
             <Link
               to="/lucrari"
-              className="group inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all duration-300"
-            >
+              className="group inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all duration-300">
+              
               Vezi toate lucrările
               <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5" />
             </Link>
@@ -499,23 +499,23 @@ const Index = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { src: portfolioVeneers, title: "Fațete ceramice frontale", material: "Feldspat" },
-              { src: portfolioZirconia, title: "Coroane zirconiu full contour", material: "Katana Zirconia" },
-              { src: portfolioEmax, title: "Punte E-max anterioară", material: "IPS e.max" },
-            ].map((work, i) => (
-              <motion.div
-                key={work.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.12, ease }}
-                className="group relative aspect-[4/3] rounded-2xl overflow-hidden shadow-card cursor-pointer"
-              >
+            { src: portfolioVeneers, title: "Fațete ceramice frontale", material: "Feldspat" },
+            { src: portfolioZirconia, title: "Coroane zirconiu full contour", material: "Katana Zirconia" },
+            { src: portfolioEmax, title: "Punte E-max anterioară", material: "IPS e.max" }].
+            map((work, i) =>
+            <motion.div
+              key={work.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.12, ease }}
+              className="group relative aspect-[4/3] rounded-2xl overflow-hidden shadow-card cursor-pointer">
+              
                 <img
-                  src={work.src}
-                  alt={work.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+                src={work.src}
+                alt={work.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end">
                   <div className="p-6">
                     <p className="text-sm font-medium text-primary-foreground">{work.title}</p>
@@ -523,7 +523,7 @@ const Index = () => {
                   </div>
                 </div>
               </motion.div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -536,15 +536,15 @@ const Index = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease }}
-            className="relative bg-foreground rounded-3xl p-12 md:p-20 text-center overflow-hidden"
-          >
+            className="relative bg-foreground rounded-3xl p-12 md:p-20 text-center overflow-hidden">
+            
             {/* Subtle grid pattern */}
             <div className="absolute inset-0 opacity-5"
-              style={{
-                backgroundImage: "radial-gradient(circle at 1px 1px, hsl(var(--primary-foreground)) 1px, transparent 0)",
-                backgroundSize: "32px 32px",
-              }}
-            />
+            style={{
+              backgroundImage: "radial-gradient(circle at 1px 1px, hsl(var(--primary-foreground)) 1px, transparent 0)",
+              backgroundSize: "32px 32px"
+            }} />
+            
             <div className="relative">
               <h2 className="text-3xl md:text-5xl font-bold text-primary-foreground max-w-2xl mx-auto">
                 Pregătit să ridici standardul clinicii tale?
@@ -555,15 +555,15 @@ const Index = () => {
               <div className="mt-10 flex flex-wrap gap-4 justify-center">
                 <Link
                   to="/servicii"
-                  className="group inline-flex items-center gap-2 h-13 px-8 text-sm font-medium rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:gap-3"
-                >
+                  className="group inline-flex items-center gap-2 h-13 px-8 text-sm font-medium rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:gap-3 py-[8px]">
+                  
                   Devino partener
                   <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5" />
                 </Link>
                 <Link
                   to="/echipa"
-                  className="inline-flex items-center gap-2 h-13 px-8 text-sm font-medium rounded-xl border border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 transition-all duration-300"
-                >
+                  className="inline-flex items-center gap-2 h-13 px-8 text-sm font-medium rounded-xl border border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 transition-all duration-300">
+                  
                   Cunoaște echipa
                 </Link>
               </div>
@@ -583,19 +583,19 @@ const Index = () => {
           <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-card to-transparent z-10" />
           <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-card to-transparent z-10" />
           <div className="flex animate-ticker whitespace-nowrap">
-            {partners.map((name, i) => (
-              <span
-                key={i}
-                className="mx-12 text-lg font-semibold text-muted-foreground/30"
-              >
+            {partners.map((name, i) =>
+            <span
+              key={i}
+              className="mx-12 text-lg font-semibold text-muted-foreground/30">
+              
                 {name}
               </span>
-            ))}
+            )}
           </div>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>);
+
 };
 
 export default Index;
