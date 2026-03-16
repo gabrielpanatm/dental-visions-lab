@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const links = [
@@ -13,11 +13,29 @@ const links = [
 const Navbar = () => {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const isHome = location.pathname === "/";
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const showBg = scrolled || !isHome;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        showBg
+          ? "bg-background/90 backdrop-blur-xl border-b border-border/50"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
       <div className="container mx-auto flex items-center justify-between h-16 px-6">
-        <Link to="/" className="text-lg font-semibold tracking-tight text-foreground">
+        <Link to="/" className={`text-lg font-semibold tracking-tight transition-colors duration-300 ${
+          showBg ? "text-foreground" : "text-primary-foreground"
+        }`}>
           DENTAL<span className="text-primary">LAB</span>
         </Link>
 
@@ -30,7 +48,9 @@ const Navbar = () => {
               className={`text-sm font-medium transition-colors duration-200 ${
                 location.pathname === link.to
                   ? "text-primary"
-                  : "text-muted-foreground hover:text-foreground"
+                  : showBg
+                  ? "text-muted-foreground hover:text-foreground"
+                  : "text-primary-foreground/70 hover:text-primary-foreground"
               }`}
             >
               {link.label}
@@ -46,7 +66,7 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-foreground"
+          className={`md:hidden transition-colors ${showBg ? "text-foreground" : "text-primary-foreground"}`}
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? <X size={20} /> : <Menu size={20} />}
