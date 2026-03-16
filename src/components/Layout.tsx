@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -14,21 +15,26 @@ const pageTransition = {
   ease: [0.2, 0, 0, 1] as const,
 };
 
-const Layout = ({ children }: { children: ReactNode }) => (
-  <div className="min-h-screen flex flex-col">
-    <Navbar />
-    <motion.main
-      className="flex-1 pt-16"
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      variants={pageVariants}
-      transition={pageTransition}
-    >
-      {children}
-    </motion.main>
-    <Footer />
-  </div>
-);
+const Layout = ({ children }: { children: ReactNode }) => {
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <motion.main
+        className={`flex-1 ${isHome ? "" : "pt-16"}`}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        variants={pageVariants}
+        transition={pageTransition}
+      >
+        {children}
+      </motion.main>
+      <Footer />
+    </div>
+  );
+};
 
 export default Layout;

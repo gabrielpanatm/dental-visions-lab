@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Microscope, Cpu, ShieldCheck, Diamond, Layers, Scan, ChevronDown } from "lucide-react";
+import { ArrowRight, Microscope, Cpu, ShieldCheck, Diamond, Layers, Scan } from "lucide-react";
 import Layout from "@/components/Layout";
 import heroImage from "@/assets/hero-dental.jpg";
 import portfolioVeneers from "@/assets/portfolio-veneers.jpg";
@@ -84,8 +84,8 @@ const Index = () => {
 
   return (
     <Layout>
-      {/* Hero — fullscreen with zoom & parallax */}
-      <section ref={heroRef} className="relative h-screen min-h-[700px] flex items-center overflow-hidden">
+      {/* Hero — cinematic fullscreen */}
+      <section ref={heroRef} className="relative h-screen min-h-[700px] flex items-end overflow-hidden">
         {/* Background image with slow zoom */}
         <motion.div className="absolute inset-0" style={{ scale: heroScale }}>
           <img
@@ -95,105 +95,176 @@ const Index = () => {
           />
         </motion.div>
 
-        {/* Gradient overlay — more cinematic */}
-        <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/50 to-foreground/80" />
+        {/* Multi-layer gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground via-foreground/60 to-foreground/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-foreground/40 to-transparent" />
 
-        {/* Content with parallax */}
-        <motion.div className="relative container mx-auto px-6" style={{ opacity: heroOpacity, y: heroY }}>
-          <div className="max-w-3xl">
-            {/* Badge */}
+        {/* Geometric accents */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.07 }}
+          transition={{ delay: 1.5, duration: 2 }}
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: "linear-gradient(hsl(var(--primary-foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary-foreground)) 1px, transparent 1px)",
+            backgroundSize: "80px 80px",
+          }}
+        />
+
+        {/* Floating accent elements */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 0.15, scale: 1 }}
+          transition={{ delay: 1.8, duration: 1.5, ease }}
+          className="absolute top-1/4 right-[15%] w-64 h-64 rounded-full border border-primary/30 hidden lg:block"
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 0.1, scale: 1 }}
+          transition={{ delay: 2, duration: 1.5, ease }}
+          className="absolute top-1/3 right-[10%] w-40 h-40 rounded-full bg-primary/20 blur-3xl hidden lg:block"
+        />
+
+        {/* Corner technical marks */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.3 }}
+          transition={{ delay: 2.2, duration: 1 }}
+          className="absolute top-24 right-8 text-primary-foreground/40 text-[10px] font-mono tracking-widest hidden lg:block"
+        >
+          <div>LAT 44.4268°N</div>
+          <div>LON 26.1025°E</div>
+        </motion.div>
+
+        {/* Main content — bottom aligned */}
+        <motion.div className="relative container mx-auto px-6 pb-20 md:pb-28" style={{ opacity: heroOpacity, y: heroY }}>
+          <div className="grid lg:grid-cols-12 gap-8 items-end">
+            {/* Left — main headline */}
+            <div className="lg:col-span-8">
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3, ease }}
+                className="flex items-center gap-3 mb-8"
+              >
+                <motion.div
+                  animate={{ scaleX: [0, 1] }}
+                  transition={{ duration: 0.8, delay: 0.5, ease }}
+                  className="h-px w-12 bg-primary origin-left"
+                />
+                <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary">
+                  Laborator de Tehnică Dentară
+                </span>
+              </motion.div>
+
+              {/* Headline — clip reveal */}
+              <div className="space-y-1">
+                <div className="overflow-hidden">
+                  <motion.div
+                    initial={{ y: "100%" }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 1, delay: 0.5, ease }}
+                  >
+                    <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold text-primary-foreground leading-[0.95]">
+                      Sinergia
+                    </h1>
+                  </motion.div>
+                </div>
+                <div className="overflow-hidden">
+                  <motion.div
+                    initial={{ y: "100%" }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 1, delay: 0.65, ease }}
+                  >
+                    <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold leading-[0.95]">
+                      <span className="text-primary">precizie</span>
+                      <span className="text-primary-foreground"> &</span>
+                    </h1>
+                  </motion.div>
+                </div>
+                <div className="overflow-hidden">
+                  <motion.div
+                    initial={{ y: "100%" }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 1, delay: 0.8, ease }}
+                  >
+                    <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold text-primary-foreground leading-[0.95]">
+                      măiestrie<span className="text-primary">.</span>
+                    </h1>
+                  </motion.div>
+                </div>
+              </div>
+
+              {/* CTAs */}
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 1.3, ease }}
+                className="mt-10 flex flex-wrap gap-4"
+              >
+                <Link
+                  to="/servicii"
+                  className="group relative inline-flex items-center gap-2 h-14 px-8 text-sm font-medium rounded-xl bg-primary text-primary-foreground overflow-hidden transition-all duration-300 hover:gap-3"
+                >
+                  <span className="relative z-10">Devino partener</span>
+                  <ArrowRight size={16} className="relative z-10 transition-transform duration-300 group-hover:translate-x-0.5" />
+                  <motion.div
+                    className="absolute inset-0 bg-primary/80"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </Link>
+                <Link
+                  to="/lucrari"
+                  className="inline-flex items-center gap-2 h-14 px-8 text-sm font-medium rounded-xl border border-primary-foreground/20 text-primary-foreground backdrop-blur-md hover:bg-primary-foreground/10 transition-all duration-300"
+                >
+                  Vezi portofoliul
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Right — vertical text + stats */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary-foreground/20 bg-primary-foreground/5 backdrop-blur-sm mb-8"
+              transition={{ duration: 0.8, delay: 1.5, ease }}
+              className="lg:col-span-4 hidden lg:flex flex-col items-end gap-8"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              <span className="text-xs font-medium tracking-widest uppercase text-primary-foreground/80">
-                Laborator de Tehnică Dentară
-              </span>
-            </motion.div>
-
-            {/* Headline — staggered animation */}
-            <div className="overflow-hidden">
-              <motion.h1
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4, ease }}
-                className="text-5xl md:text-7xl font-bold text-primary-foreground leading-[1.05]"
-              >
-                Sinergia dintre
-              </motion.h1>
-            </div>
-            <div className="overflow-hidden">
-              <motion.h1
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.55, ease }}
-                className="text-5xl md:text-7xl font-bold leading-[1.05]"
-              >
-                <span className="text-primary">precizia digitală</span>
-              </motion.h1>
-            </div>
-            <div className="overflow-hidden">
-              <motion.h1
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.7, ease }}
-                className="text-5xl md:text-7xl font-bold text-primary-foreground leading-[1.05]"
-              >
-                și măiestria analogică
-              </motion.h1>
-            </div>
-
-            {/* Subtext */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1, ease }}
-              className="mt-8 text-lg md:text-xl text-primary-foreground/70 max-w-lg"
-            >
-              Nu livrăm doar dinți, livrăm predictibilitate pentru clinica dumneavoastră.
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.2, ease }}
-              className="mt-10 flex flex-wrap gap-4"
-            >
-              <Link
-                to="/servicii"
-                className="group inline-flex items-center gap-2 h-13 px-8 text-sm font-medium rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:gap-3"
-              >
-                Devino partener
-                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5" />
-              </Link>
-              <Link
-                to="/lucrari"
-                className="inline-flex items-center gap-2 h-13 px-8 text-sm font-medium rounded-xl border border-primary-foreground/25 text-primary-foreground backdrop-blur-sm hover:bg-primary-foreground/10 transition-all duration-300"
-              >
-                Vezi portofoliul
-              </Link>
+              <p className="text-sm text-primary-foreground/50 text-right max-w-[240px] leading-relaxed">
+                Nu livrăm doar dinți, livrăm predictibilitate pentru clinica dumneavoastră.
+              </p>
+              <div className="flex gap-8">
+                <div className="text-right">
+                  <div className="text-2xl font-bold text-primary">15K+</div>
+                  <div className="text-[10px] uppercase tracking-widest text-primary-foreground/40 mt-1">Restaurări/an</div>
+                </div>
+                <div className="w-px bg-primary-foreground/15" />
+                <div className="text-right">
+                  <div className="text-2xl font-bold text-primary">12+</div>
+                  <div className="text-[10px] uppercase tracking-widest text-primary-foreground/40 mt-1">Ani experiență</div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator — minimal line */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          transition={{ delay: 2.5, duration: 1 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
         >
-          <span className="text-xs text-primary-foreground/40 tracking-widest uppercase">Scroll</span>
+          <span className="text-[10px] text-primary-foreground/30 tracking-[0.3em] uppercase font-medium">
+            Descoperă
+          </span>
           <motion.div
-            animate={{ y: [0, 8, 0] }}
+            className="w-px h-8 bg-gradient-to-b from-primary to-transparent"
+            animate={{ scaleY: [0.3, 1, 0.3] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ChevronDown size={16} className="text-primary-foreground/40" />
-          </motion.div>
+          />
         </motion.div>
       </section>
 
