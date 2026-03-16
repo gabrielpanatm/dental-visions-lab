@@ -1,11 +1,32 @@
 import { ReactNode } from "react";
+import { motion } from "framer-motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+
+const pageVariants = {
+  initial: { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -12 },
+};
+
+const pageTransition = {
+  duration: 0.35,
+  ease: [0.2, 0, 0, 1] as const,
+};
 
 const Layout = ({ children }: { children: ReactNode }) => (
   <div className="min-h-screen flex flex-col">
     <Navbar />
-    <main className="flex-1 pt-16">{children}</main>
+    <motion.main
+      className="flex-1 pt-16"
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={pageVariants}
+      transition={pageTransition}
+    >
+      {children}
+    </motion.main>
     <Footer />
   </div>
 );
