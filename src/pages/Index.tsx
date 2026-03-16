@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Microscope, Cpu, ShieldCheck, Diamond, Layers, Scan, ChevronDown } from "lucide-react";
+import { ArrowRight, Microscope, Cpu, ShieldCheck, Diamond, Layers, Scan } from "lucide-react";
 import Layout from "@/components/Layout";
 import heroImage from "@/assets/hero-dental.jpg";
 import portfolioVeneers from "@/assets/portfolio-veneers.jpg";
