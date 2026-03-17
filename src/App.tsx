@@ -16,16 +16,18 @@ const queryClient = new QueryClient();
 const AnimatedRoutes = () => {
   const location = useLocation();
   return (
-    <ScrollToTop />
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Index />} />
-        <Route path="/servicii" element={<Servicii />} />
-        <Route path="/lucrari" element={<Lucrari />} />
-        <Route path="/echipa" element={<Echipa />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </AnimatePresence>
+    <>
+      <ScrollToTop />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Index />} />
+          <Route path="/servicii" element={<Servicii />} />
+          <Route path="/lucrari" element={<Lucrari />} />
+          <Route path="/echipa" element={<Echipa />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </AnimatePresence>
+    </>
   );
 };
 
